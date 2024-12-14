@@ -1,42 +1,79 @@
 <!-- user-registration.component.html  -->
 <form [formGroup]="userForm" (ngSubmit)="submitForm()">
-    <!-- first name -->
+
+    <!-- First Name -->
     <p>
       <label for="first-name">First Name</label>
-      <input type="text" id="first-name" name="first-name" formControlName="firstName" />
+      <input type="text" id="first-name" formControlName="firstName"
+        [class.invalid]="firstName.invalid && (firstName.dirty || firstName.touched)" />
+      <small class="error" *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+        First name is required.
+      </small>
     </p>
-    <!-- last name -->
+  
+    <!-- Last Name -->
     <p>
       <label for="last-name">Last Name</label>
-      <input type="text" id="last-name" name="last-name" formControlName="lastName"/>
+      <input type="text" id="last-name" formControlName="lastName"
+        [class.invalid]="lastName.invalid && (lastName.dirty || lastName.touched)" />
+      <small class="error" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+        Last name is required.
+      </small>
     </p>
-    <!-- email -->
+  
+    <!-- Email -->
     <p>
       <label for="email">Email</label>
-      <input type="email" id="email" name="email" formControlName="email"/>
+      <input type="email" id="email" formControlName="email"
+        [class.invalid]="email.invalid && (email.dirty || email.touched)" />
+      <small class="error" *ngIf="email.invalid && (email.dirty || email.touched)">
+        Please enter a valid email.
+      </small>
     </p>
-    <!-- phone -->
+  
+    <!-- Phone -->
     <p>
       <label for="phone">Phone</label>
-      <input type="text" id="phone" name="phone" formControlName="phone"/>
+      <input type="text" id="phone" formControlName="phone"
+        [class.invalid]="phone.invalid && (phone.dirty || phone.touched)" />
+      <small class="error" *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+        Please enter a valid phone number.
+      </small>
     </p>
-    <!-- address -->
+  
+    <!-- Address -->
     <p>
       <label for="address">Address</label>
-      <input type="text" id="address" name="address" formControlName="address"/>
+      <input type="text" id="address" formControlName="address"
+        [class.invalid]="address.invalid && (address.dirty || address.touched)" />
+      <small class="error" *ngIf="address.invalid && (address.dirty || address.touched)">
+        Address is required.
+      </small>
     </p>
-    <!-- username -->
+  
+    <!-- Username -->
     <p>
       <label for="username">Username</label>
-      <input type="text" id="username" name="username" formControlName="username"/>
+      <input type="text" id="username" formControlName="username"
+        [class.invalid]="username.invalid && (username.dirty || username.touched)" />
+      <small class="error" *ngIf="username.invalid && (username.dirty || username.touched)">
+        Username is required.
+      </small>
     </p>
-    <!-- password -->
+  
+    <!-- Password -->
     <p>
       <label for="password">Password</label>
-      <input type="password" id="password" name="password" formControlName="password"/>
+      <input type="password" id="password" formControlName="password"
+        [class.invalid]="password.invalid && (password.dirty || password.touched)" />
+      <small class="error" *ngIf="password.invalid && (password.dirty || password.touched)">
+        Password must be at least 8 chars, contain a capital letter, a number, and a special symbol.
+      </small>
     </p>
-
+  
     <p id="actions">
-      <button type="submit">Submit</button>
+      <button type="submit" [disabled]="userForm.invalid">Submit</button>
     </p>
-</form>
+  
+  </form>
+  

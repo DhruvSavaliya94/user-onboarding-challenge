@@ -5,10 +5,11 @@ import { FormsModule, ReactiveFormsModule, FormGroup, FormControl } from '@angul
 import { FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'user-registration',
-  imports: [ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './user-registration.component.html',
   styleUrl: './user-registration.component.css'
 })
@@ -38,7 +39,7 @@ export class UserRegistrationComponent {
 
   phoneValidator(control: AbstractControl): ValidationErrors | null {
     const value = control.value || '';
-    const regex = /^[0-9()+ -]+$/;
+    const regex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
     return regex.test(value) ? null : { invalidPhone: true };
   }
 
@@ -52,4 +53,12 @@ export class UserRegistrationComponent {
     }
     return null;
   }
+
+  get firstName() { return this.userForm.get('firstName')!; }
+  get lastName() { return this.userForm.get('lastName')!; }
+  get email() { return this.userForm.get('email')!; }
+  get phone() { return this.userForm.get('phone')!; }
+  get address() { return this.userForm.get('address')!; }
+  get username() { return this.userForm.get('username')!; }
+  get password() { return this.userForm.get('password')!; }
 }

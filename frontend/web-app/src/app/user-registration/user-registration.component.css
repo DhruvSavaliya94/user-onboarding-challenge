@@ -1,3 +1,5 @@
+/* user-registration.component.css */
+
 form {
     margin: 2rem auto;
     max-width: 30rem;
@@ -24,6 +26,19 @@ form {
     background-color: #545144;
     color: #fdf8df;
     border-radius: 0.25rem;
+    outline: none;
+  }
+  
+  input.invalid {
+    border: 1px solid #ff4d4d;
+    background-color: #4b4840;
+  }
+  
+  .error {
+    color: #ff4d4d;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    display: block;
   }
   
   #actions {
@@ -43,5 +58,10 @@ form {
   button:hover,
   button:active {
     background-color: #f3d861;
+  }
+  
+  button[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
   }
   
