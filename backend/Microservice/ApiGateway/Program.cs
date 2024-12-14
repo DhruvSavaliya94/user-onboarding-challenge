@@ -15,7 +15,17 @@ public class Program
             builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
             builder.Services.AddOcelot(builder.Configuration);
 
+            // Add CORS
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    policy => policy.AllowAnyOrigin()
+                                    .AllowAnyMethod()
+                                    .AllowAnyHeader());
+            });
+
             var app = builder.Build();
+            app.UseCors("AllowAllOrigins");
             await app.UseOcelot();
             app.Run();
         }

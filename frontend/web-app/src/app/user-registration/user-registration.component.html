@@ -1,39 +1,39 @@
 <!-- user-registration.component.html  -->
-<form #userForm>
+<form [formGroup]="userForm" (ngSubmit)="submitForm()">
     <!-- first name -->
     <p>
       <label for="first-name">First Name</label>
-      <input type="text" id="first-name" name="first-name" #first_name />
+      <input type="text" id="first-name" name="first-name" formControlName="firstName" />
     </p>
     <!-- last name -->
     <p>
       <label for="last-name">Last Name</label>
-      <input type="text" id="last-name" name="last-name" #last_name />
+      <input type="text" id="last-name" name="last-name" formControlName="lastName"/>
     </p>
     <!-- email -->
     <p>
       <label for="email">Email</label>
-      <input type="email" id="email" name="email" #email />
+      <input type="email" id="email" name="email" formControlName="email"/>
     </p>
     <!-- phone -->
     <p>
       <label for="phone">Phone</label>
-      <input type="text" id="phone" name="phone" #phone />
+      <input type="text" id="phone" name="phone" formControlName="phone"/>
     </p>
     <!-- address -->
     <p>
       <label for="address">Address</label>
-      <input type="text" id="address" name="address" #address />
+      <input type="text" id="address" name="address" formControlName="address"/>
     </p>
     <!-- username -->
     <p>
       <label for="username">Username</label>
-      <input type="text" id="username" name="username" #username />
+      <input type="text" id="username" name="username" formControlName="username"/>
     </p>
     <!-- password -->
     <p>
       <label for="password">Password</label>
-      <input type="password" id="password" name="password" #password />
+      <input type="password" id="password" name="password" formControlName="password"/>
     </p>
 
     <p id="actions">
