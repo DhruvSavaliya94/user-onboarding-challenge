@@ -368,3 +368,4 @@ MigrationBackup/
 
 /backend/Microservice/UserService/appsettings.Development.json
 /backend/Microservice/ApiGateway/appsettings.Development.json
+/frontend/web-app/.vscode
