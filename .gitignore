@@ -365,3 +365,6 @@ MigrationBackup/
 
 # # Re-include the specific file
 # !bin/Debug/net8.0/Data/user.txt
+
+/backend/Microservice/UserService/appsettings.Development.json
+/backend/Microservice/ApiGateway/appsettings.Development.json
