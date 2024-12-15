@@ -32,7 +32,7 @@ export class UserRegistrationComponent {
     if (this.userForm.valid) {
       console.log("Form is valid");
       this.userService.addUser(this.userForm.value).subscribe(user => {
-        //this.router.navigate(['/confirmation', user.id]);
+        this.router.navigate(['/user', user.id]);
       });
     }
   }

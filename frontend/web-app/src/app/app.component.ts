@@ -4,7 +4,7 @@ import { UserRegistrationComponent } from './user-registration/user-registration
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, UserRegistrationComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
