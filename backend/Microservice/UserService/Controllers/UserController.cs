@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using UserService.Helpers;
 using UserService.Models;
 using UserService.Repositories;
 
@@ -34,6 +35,12 @@ public class UserController : ControllerBase
     [HttpPost]
     public ActionResult<User> Post([FromBody] User user)
     {
+        // Hash the password before storing
+        if (!string.IsNullOrWhiteSpace(user.Password))
+        {
+            user.Password = PasswordHasherHelper.HashPassword(user.Password);
+        }
+        
         var created = _repo.Add(user);
         return CreatedAtAction(nameof(Get), new { id = created.Id }, created);
     }
@@ -46,6 +53,13 @@ public class UserController : ControllerBase
 
         // Ensuring the ID remains consistent
         user.Id = id;
+
+        // Hash the password only if it is provided
+        if (!string.IsNullOrWhiteSpace(user.Password))
+        {
+            user.Password = PasswordHasherHelper.HashPassword(user.Password);
+        }
+        
         var updated = _repo.Update(user);
         return Ok(updated);
     }
