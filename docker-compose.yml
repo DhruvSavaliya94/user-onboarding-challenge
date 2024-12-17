@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+  userservice:
+    image: dhruvsavaliya314/userservice:latest
+    build:
+      context: .
+      dockerfile: backend/Microservice/Dockerfile
+    container_name: userservice
+    ports:
+      - "5000:5000"
+    environment:
+      - ASPNETCORE_URLS=http://+:5000
+    networks:
+      - app-network
+
+  apigateway:
+    image: dhruvsavaliya314/api-gw:latest
+    build:
+      context: .
+      dockerfile: backend/Microservice/ApiGateway/Dockerfile
+    container_name: apigateway
+    ports:
+      - "5013:5013"
+    environment:
+      - ASPNETCORE_URLS=http://+:5013
+    networks:
+      - app-network
+  
+  webapp:
+    image: dhruvsavaliya314/web-app:latest
+    build:
+      context: .
+      dockerfile: frontend/web-app/Dockerfile
+    container_name: webapp
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
