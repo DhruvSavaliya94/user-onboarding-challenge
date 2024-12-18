@@ -28,9 +28,9 @@ services:
   
   webapp:
     image: dhruvsavaliya314/web-app:latest
-    build:
-      context: .
-      dockerfile: frontend/web-app/Dockerfile
+    # build:
+    #   context: .
+    #   dockerfile: frontend/web-app/Dockerfile
     container_name: webapp
     ports:
       - "8080:8080"
