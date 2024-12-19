@@ -5,15 +5,15 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
 # Copy the UserService and TextFileDataStore project files
-COPY backend/Microservice/UserService/UserService.csproj UserService/
-COPY backend/Microservice/TextFileDataStore/TextFileDataStore.csproj TextFileDataStore/
+COPY ./UserService/UserService.csproj UserService/
+COPY ./TextFileDataStore/TextFileDataStore.csproj TextFileDataStore/
 
 # Restore the dependencies for UserService (which includes TextFileDataStore)
 RUN dotnet restore UserService/UserService.csproj
 
 # Copy the remaining source code for both projects
-COPY backend/Microservice/UserService/. UserService/
-COPY backend/Microservice/TextFileDataStore/. TextFileDataStore/
+COPY ./UserService/. UserService/
+COPY ./TextFileDataStore/. TextFileDataStore/
 
 # Publish the UserService project
 WORKDIR /app/UserService
@@ -27,7 +27,7 @@ WORKDIR /app
 
 # Setting up txt file for user data
 RUN mkdir -p Data
-COPY backend/Microservice/UserService/Data/user.txt Data/
+COPY ./UserService/Data/user.txt Data/
 
 # Copy the published output from the build stage
 COPY --from=build /app/publish .

@@ -1,10 +1,10 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
-COPY backend/Microservice/ApiGateway/ApiGateway.csproj ApiGateway/
+COPY ApiGateway.csproj ApiGateway/
 RUN dotnet restore ApiGateway/ApiGateway.csproj
 
-COPY backend/Microservice/ApiGateway ApiGateway/
+COPY . ApiGateway/
 WORKDIR /app/ApiGateway
 RUN dotnet publish -c Release -o /app/publish
 

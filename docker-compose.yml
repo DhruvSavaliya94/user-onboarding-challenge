@@ -3,8 +3,8 @@ services:
   userservice:
     image: dhruvsavaliya314/userservice:latest
     build:
-      context: .
-      dockerfile: backend/Microservice/Dockerfile
+      context: ./backend/Microservice
+      dockerfile: Dockerfile
     container_name: userservice
     ports:
       - "5000:5000"
@@ -16,8 +16,8 @@ services:
   apigateway:
     image: dhruvsavaliya314/api-gw:latest
     build:
-      context: .
-      dockerfile: backend/Microservice/ApiGateway/Dockerfile
+      context: ./backend/Microservice/ApiGateway
+      dockerfile: Dockerfile
     container_name: apigateway
     ports:
       - "5013:5013"
@@ -28,9 +28,9 @@ services:
   
   webapp:
     image: dhruvsavaliya314/web-app:latest
-    # build:
-    #   context: .
-    #   dockerfile: frontend/web-app/Dockerfile
+    build:
+      context: ./frontend/web-app
+      dockerfile: Dockerfile
     container_name: webapp
     ports:
       - "8080:8080"
